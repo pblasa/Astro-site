@@ -1,0 +1,9 @@
+.hero {
+  background-image: url('assets/images/ui_image.jpg');
+  background-size: cover;      /* Makes it fill the container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Don’t tile it */
+  width: 100%;                 /* Full width */
+  height: 400px;               /* Adjust height as needed */
+  border: none;                /* Ensures no border */
+}
