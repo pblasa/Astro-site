@@ -9,9 +9,10 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  font-family: 'Outfit', Arial, sans-serif;
   background: #f8f6f3;
   color: #222;
+
 }
 
 .hero {
