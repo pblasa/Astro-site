@@ -34,6 +34,14 @@ h1 {
   }
 }
 
+.calendar-text {
+  max-width: 700px;   /* keeps paragraph from stretching full width */
+  margin: 0;          /* aligns left with headers */
+  padding: 0;         /* no extra horizontal padding in desktop view */
+  text-align: left;   /* forces left alignment */
+  line-height: 1.6;   /* easier to read */
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
