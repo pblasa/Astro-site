@@ -83,7 +83,7 @@ h1 {
 
 .hero-overlay {
   background: none; /* dark overlay */
-  padding: 40px;
+  padding: 0px;
   text-align: left;
   color: white;
   border-radius: 8px;
