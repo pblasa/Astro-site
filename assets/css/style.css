@@ -110,12 +110,14 @@ h1 {
 }
 
 .menu-btn {
+  font-family: Arial, sans-serif; /* fallback that has ☰ */
+  font-size: 2rem;
   background: none;
   border: none;
   cursor: pointer;
-  color: #fff;
-  font-size: 1.5rem;
+  color: white; /* or whatever contrasts hero */
 }
+
 
 .dropdown {
   display: none; /* hidden by default */
