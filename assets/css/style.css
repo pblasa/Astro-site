@@ -148,3 +148,10 @@ h1 {
   display: block;
 }
 
+.limited-text {
+  max-width: 700px;   /* limits how wide it can go */
+  margin: 0 auto;     /* centers paragraph horizontally */
+  padding: 0 20px;    /* optional padding on small screens */
+  line-height: 1.6;   /* makes it easier to read */
+}
+
