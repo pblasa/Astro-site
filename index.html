@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Everything is Connected – 2026 Astrology Calendar</title>
 
-  <!-- Basic SEO -->
+  <!-- SEO -->
   <meta name="description" content="Download the 2026 Astrology Calendar in .ics format. Stay synced with lunations, retrogrades, eclipses, and cosmic events. Free import for Google and Apple Calendar.">
   <meta name="keywords" content="astrology calendar, 2026, .ics calendar, lunar phases, retrogrades, eclipses, astrology events, downloadable calendar">
   <meta name="author" content="Everything is Connected">
-
+  
   <!-- Open Graph -->
   <meta property="og:title" content="Everything is Connected – 2026 Astrology Calendar">
   <meta property="og:description" content="Download the 2026 Astrology Calendar in .ics format. Stay synced with lunations, retrogrades, eclipses, and cosmic events.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://everythingisconnected.life/">
   <meta property="og:image" content="https://everythingisconnected.life/assets/images/calendar-preview.png">
-
-  <!-- Twitter card -->
+  
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Everything is Connected – 2026 Astrology Calendar">
   <meta name="twitter:description" content="Download the 2026 Astrology Calendar in .ics format. Stay synced with lunations, retrogrades, eclipses, and cosmic events.">
@@ -27,19 +26,166 @@
   <!-- Calendar .ics -->
   <link rel="alternate" type="text/calendar" title="2026 Astrology Calendar" href="assets/calendars/astrology-2026.ics">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ===== Fonts ===== */
+    @font-face {
+      font-family: 'Outfit';
+      src: url('../fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ===== Reset & Body ===== */
+    body {
+      margin: 0;
+      font-family: 'Outfit', Arial, sans-serif;
+      color: #f8f6f3;
+      text-align: left;
+      background: #3c3530;
+      overflow-x: hidden;
+    }
+
+    /* ===== Background Slideshow ===== */
+    #bg-slideshow {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+    .bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .bg.active { opacity: 1; }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 80px 20px;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      color: white;
+    }
+    .hero-content { max-width: 700px; margin-left: 5px; }
+
+    h1 { margin: 0 0 10px; font-size: 2.5rem; color: #DCDAC7; letter-spacing: -0.5px; }
+    .tagline { font-size: 1.2rem; margin-bottom: 2rem; }
+
+    /* ===== SEO hidden H1 ===== */
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0,0,0,0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* ===== Preview popups ===== */
+    .preview-wrapper { position: relative; display: inline-block; margin-bottom: 40px; }
+    .preview-box {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      width: 450px;
+      height: 600px;
+      background: #2f2a26;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .preview-wrapper:hover .preview-box {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ===== Menu ===== */
+    .menu-container {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+    .menu-btn {
+      font-family: Arial, sans-serif;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background: #333;
+      padding: 10px 0;
+      border-radius: 6px;
+      min-width: 180px;
+    }
+    .dropdown a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .dropdown a:hover { background: #555; }
+    .menu-container:hover .dropdown { display: block; }
+
+    /* ===== Buttons ===== */
+    .btn { display: inline-block; margin-top: 10px; padding: 12px 20px; border-radius: 6px; background: black; color: white; text-decoration: none; font-size: 1rem; }
+    .btn.secondary { background: #555; }
+
+    /* ===== Calendar text ===== */
+    .calendar-text {
+      max-width: 800px;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .preview-box { width: 300px; height: 400px; }
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- BACKGROUND SLIDESHOW -->
+  <!-- Background -->
   <div id="bg-slideshow">
     <div class="bg bg1"></div>
     <div class="bg bg2"></div>
   </div>
 
-  <!-- MENU -->
+  <!-- Menu -->
   <div class="menu-container">
     <button class="menu-btn">☰</button>
     <div class="dropdown">
@@ -52,63 +198,41 @@
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- Hero Content -->
   <div class="hero">
     <div class="hero-content">
+      <!-- SEO H1 -->
       <h1 class="visually-hidden">2026 Astrology Calendar (.ics) – Free Download</h1>
+
       <h1 class="hero-title">Everything is Connected</h1>
       <p class="tagline">Evolutionary Astrology and Vipassana Meditation for the Quantum Self</p>
 
-      <!-- CALENDAR PREVIEW -->
-     <div class="preview-wrapper">
-  <h2 style="padding-top:60px;">2026 Astrology Calendar (.ics)</h2>
-  <a href="calendar-details.html" class="preview-box">
-    <img src="assets/images/calendar_en.png" alt="Calendar Subscribe example">
-  </a>
-</div>
-
-
-      <div class="calendar-text">
-        <p>
-          Free Subscribe to our Calendar – updates your Apple or Google Calendar adding lunations, retrogrades, and major transits as they happen. Each transit event alerts you days before it goes exact.
-        </p>
-        <a class="btn secondary" href="webcal://p134-caldav.icloud.com/published/...">
-          Subscribe Automatically HERE
+      <!-- Preview items -->
+      <div class="preview-wrapper">
+        <h2>2026 Astrology Calendar (.ics)</h2>
+        <a href="calendar-details.html" class="preview-box">
+          <img src="assets/images/calendar_en.png" alt="Calendar">
         </a>
       </div>
 
-      <!-- POSTERS -->
       <div class="preview-wrapper">
         <h2>Astrology Posters</h2>
         <a href="https://www.instagram.com/everythingisconnected.life/" class="preview-box">
-          <img src="assets/images/poster_en.jpg" alt="A1 Poster">
-        </a>
-        <p>
-          An A1 High Quality 300g Matte Poster is your cheat sheet wall guide to looking at your birth chart, explaining houses, planets, and signs. Available in English, German, French, Italian, and Spanish.
-        </p>
-        <a class="btn secondary" href="https://everythingconnected.gumroad.com/l/everythingisconnected">
-          Buy Posters at Gumroad
+          <img src="assets/images/poster_en.jpg" alt="Poster">
         </a>
       </div>
 
-      <!-- READINGS -->
+      <!-- Calendar description & button -->
       <div class="calendar-text">
-        <h2>Birth Chart Interpretation / Relationship Evaluation</h2>
         <p>
-          The session lasts 1.5 hours. I am an evolutionary astrologer interpreting your chart from a psycho-spiritual perspective. I help you understand unconscious habit patterns, gifts, and challenges, giving you awareness and agency to choose differently.
+          Free Subscribe to our Calendar – updates your Apple or Google Calendar adding lunations, retrogrades, and major transits as they happen. The Calendar alerts you automatically through push notifications for exact transits.
         </p>
-        <ul>
-          <li>Natal Charts (Individual)</li>
-          <li>Relationship (Synastry & Composite Charts)</li>
-          <li>Candidate Evaluation (Roommates, Employees)</li>
-          <li>Forecasting (Life transit events)</li>
-        </ul>
-        <a class="btn secondary" href="readings.html">Book a Reading</a>
+        <a class="btn secondary" href="webcal://p134-caldav.icloud.com/...">Subscribe Automatically HERE</a>
       </div>
     </div>
   </div>
 
-  <!-- BACKGROUND JS -->
+  <!-- Background slideshow JS -->
   <script>
     const images = [
       "assets/images/backgnd1.jpeg",
@@ -116,13 +240,10 @@
       "assets/images/backgnd3.jpeg",
       "assets/images/backgnd4.jpeg"
     ];
-
     let index = 0;
     let showingFirst = true;
-
     const bg1 = document.querySelector(".bg1");
     const bg2 = document.querySelector(".bg2");
-
     bg1.style.backgroundImage = `url('${images[0]}')`;
     bg1.classList.add("active");
 
@@ -139,6 +260,5 @@
       index = nextIndex;
     }, 10000);
   </script>
-
 </body>
 </html>
