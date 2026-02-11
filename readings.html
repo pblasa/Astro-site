@@ -27,9 +27,10 @@ body {
 }
 
 
-    .booking-wrapper {
-  margin-top: 40px;
-  max-width: 1000px;
+   .booking-wrapper {
+  margin: 40px auto;   /* top margin + center horizontally */
+  max-width: 700px;    /* limit width */
+  width: 100%;         /* fill container up to max-width */
 }
 
 
@@ -176,7 +177,7 @@ body {
  <h1 class="hero-title">Book a Session</h1>
 <p class="tagline">Schedule your astrology reading below</p>
 
-<div class="booking-wrapper">
+<div class="booking-wrapper" style="max-width:700px; width:100%;">
   <iframe 
     src="https://app.acuityscheduling.com/schedule.php?owner=37197823&ref=embedded_csp"
     title="Schedule Appointment"
