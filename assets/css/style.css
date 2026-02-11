@@ -106,7 +106,6 @@ h1 {
 }
 
 .hero {
-  background-image: url('../images/backgnd1.jpeg');
   background-size: cover;      /* fills div, keeps aspect ratio */
   background-position: center; /* center the subject */
   background-repeat: no-repeat;
