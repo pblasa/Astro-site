@@ -21,19 +21,20 @@ body {
 }
 
 .bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  animation: slowZoom 20s linear infinite;
 }
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
 
 .bg.active {
   opacity: 1;
 }
 
+  
 .hero,
 .menu-container {
   position: relative;
