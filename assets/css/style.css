@@ -160,5 +160,52 @@ body {
   border: 0 !important;
 }
 
+/* Menu container & button */
+.menu-container {
+  position: absolute;   /* stays fixed over hero */
+  top: 20px;
+  left: 20px;
+  z-index: 1000;        /* above hero and popups */
+}
+
+.menu-btn {
+  font-family: Arial, sans-serif; /* fallback for ☰ */
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;         /* contrast over hero */
+}
+
+/* Dropdown menu */
+.dropdown {
+  display: none;         /* hidden by default */
+  position: absolute;
+  top: 120%;             /* below button */
+  left: 0;
+  background: #333;
+  padding: 10px 0;
+  border-radius: 6px;
+  min-width: 180px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.dropdown a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-family: 'Outfit', sans-serif;
+  transition: background 0.2s ease;
+}
+
+.dropdown a:hover {
+  background: #555;
+}
+
+/* Show dropdown on hover */
+.menu-container:hover .dropdown {
+  display: block;
+}
 
 
