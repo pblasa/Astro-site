@@ -26,11 +26,28 @@ body {
   overflow-x: hidden;
 }
 
+.booking-wrapper {
+  margin: 40px auto;        /* center horizontally + top margin */
+  width: 90%;               /* relative width on small screens */
+  max-width: 1000px;        /* won't go beyond this */
+}
 
-   .booking-wrapper {
-  margin: 40px auto;   /* top margin + center horizontally */
-  max-width: 700px;    /* limit width */
-  width: 100%;         /* fill container up to max-width */
+.booking-wrapper iframe {
+  width: 100%;              /* fill wrapper */
+  min-height: 900px;        /* keep it tall enough */
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* subtle depth */
+}
+
+/* Optional: tweak for very small screens */
+@media (max-width: 500px) {
+  .booking-wrapper {
+    width: 95%;
+  }
+  .booking-wrapper iframe {
+    min-height: 700px;
+  }
 }
 
 
