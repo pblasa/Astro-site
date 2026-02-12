@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Reading – Everything is Connected</title>
+
+  <!-- Font -->
+  <link rel="preload" href="/fonts/Outfit-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+
+  <style>
+  @font-face {
+  font-family: 'Outfit';
+  src: url('assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding-left: 30px;
+  font-family: 'Outfit', Arial, sans-serif;
+  background: #3c3530;
+  color: #f8f6f3;
+  overflow-x: hidden;
+}
+
+.booking-wrapper {
+  margin: 40px auto;        /* center horizontally + top margin */
+  width: 90%;               /* relative width on small screens */
+  max-width: 1000px;        /* won't go beyond this */
+}
+
+.booking-wrapper iframe {
+  width: 100%;              /* fill wrapper */
+  min-height: 900px;        /* keep it tall enough */
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5); /* subtle depth */
+}
+
+/* Optional: tweak for very small screens */
+@media (max-width: 500px) {
+  .booking-wrapper {
+    width: 95%;
+  }
+  .booking-wrapper iframe {
+    min-height: 700px;
+  }
+}
+
+
+
+    h1 {
+      padding-top: 60px;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      max-width: 700px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+#bg-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 60s ease-in-out;
+}
+
+.bg.active {
+  opacity: 1;
+}
+
+    .menu-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.menu-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #333;
+  padding: 10px 0;
+  border-radius: 6px;
+  min-width: 180px;
+}
+
+.dropdown a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.dropdown a:hover {
+  background: #555;
+}
+
+.menu-container:hover .dropdown,
+.dropdown:hover {
+  display: block;
+}
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 120px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+
+    .booking-container {
+      max-width: 900px;
+      margin-top: 40px;
+      margin-bottom: 100px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background -->
+<div id="bg-slideshow">
+  <div class="bg bg1"></div>
+  <div class="bg bg2"></div>
+</div>
+  
+<!-- Menu -->
+<div class="menu-container">
+  <button class="menu-btn">☰</button>
+  <div class="dropdown">
+    <a href="about.html">About</a>
+    <a href="readings.html">Astrology Readings</a>
+    <a href="journal.html">Journal</a>
+    <a href="events.html">Classes/Events</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html">Home</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-content">
+ <h1 class="hero-title">Book a Session</h1>
+<p class="tagline">Schedule your astrology reading below</p>
+
+<div class="booking-wrapper" style="max-width:700px; width:100%;">
+  <iframe 
+    src="https://app.acuityscheduling.com/schedule.php?owner=37197823&ref=embedded_csp"
+    title="Schedule Appointment"
+ 
+    height="900"
+    frameborder="0"
+    allow="payment"
+    style="border-radius: 8px;">
+  </iframe>
+</div>
+
+<script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+  </div>
+</div>
+    <!-- ACUITY EMBED END -->
+  </div>
+<script>
+  const images = [
+    "assets/images/backgnd1.jpeg",
+    "assets/images/backgnd2.jpeg",
+    "assets/images/backgnd3.jpeg",
+    "assets/images/backgnd4.jpeg"
+  ];
+
+  let index = 0;
+  let showingFirst = true;
+
+  const bg1 = document.querySelector(".bg1");
+  const bg2 = document.querySelector(".bg2");
+
+  bg1.style.backgroundImage = `url('${images[0]}')`;
+  bg1.classList.add("active");
+
+  setInterval(() => {
+    const nextIndex = (index + 1) % images.length;
+    const nextBg = showingFirst ? bg2 : bg1;
+    const currentBg = showingFirst ? bg1 : bg2;
+
+    nextBg.style.backgroundImage = `url('${images[nextIndex]}')`;
+    nextBg.classList.add("active");
+    currentBg.classList.remove("active");
+
+    showingFirst = !showingFirst;
+    index = nextIndex;
+  }, 80000);
+</script>
+
+</body>
+</html>
