@@ -194,10 +194,22 @@ body {
   <div class="hero-content">
  <h1 class="hero-title">Contact</h1>
 <p class="tagline">
-  <a href="mailto:info@everythingisconnected.life">
+  <a href="mailto:info@everythingisconnected.life" class="email-link">
     info@everythingisconnected.life
   </a>
 </p>
+
+<style>
+.email-link {
+  color: white;           /* keeps text white */
+  text-decoration: none;  /* removes underline */
+  transition: color 0.3s; /* smooth hover effect */
+}
+
+.email-link:hover {
+  color: #ffd700;         /* or any hover color you like */
+}
+</style>
   </div>
 </div>
     <!-- ACUITY EMBED END -->
