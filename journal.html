@@ -69,6 +69,45 @@ window.SubstackFeedWidget = {
 </script>
 
 <script src="https://substackapi.com/embeds/feed.js" async></script>
+<div id="journal-posts" style="max-width:900px; margin:80px auto;"></div>
+  <script>
+async function loadSubstackPosts() {
+  const rssUrl = "https://everythingisconnectedlife.substack.com/feed";
 
+  // Use RSS-to-JSON proxy (needed because browsers block direct RSS fetch)
+  const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl);
+
+  try {
+    const response = await fetch(api);
+    const data = await response.json();
+
+    const container = document.getElementById("journal-posts");
+
+    data.items.slice(0,5).forEach(post => {
+      const article = document.createElement("div");
+      article.style.marginBottom = "60px";
+
+      article.innerHTML = `
+        <h2 style="margin-bottom:10px;">
+          <a href="${post.link}" target="_blank" style="color:#f8f6f3; text-decoration:none;">
+            ${post.title}
+          </a>
+        </h2>
+        <p style="color:#DCDAC7;">
+          ${post.pubDate.substring(0, 16)}
+        </p>
+        <p>${post.description.substring(0, 250)}...</p>
+      `;
+
+      container.appendChild(article);
+    });
+
+  } catch (error) {
+    console.error("Failed to load posts:", error);
+  }
+}
+
+loadSubstackPosts();
+</script>
 </body>
 </html>
