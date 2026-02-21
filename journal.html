@@ -198,7 +198,12 @@ body {
 
     <h1 class="hero-title">Journal</h1>
 
-    <script>
+<div class="journal-wrapper">
+  <div id="substack-feed-embed"></div>
+</div>
+
+<div id="substack-feed-embed"></div>
+<script>
 window.SubstackFeedWidget = {
   substackUrl: "everythingisconnectedlife.substack.com",
   posts: 5,
@@ -211,24 +216,6 @@ window.SubstackFeedWidget = {
 </script>
 
 <script src="https://substack.com/embed/widget.js" async></script>
-
-  </div>
-</div>
-
-<!-- Substack widget MUST be here -->
-<script>
-window.SubstackFeedWidget = {
-  substackUrl: "https://substack.com/@everythingisconnectedlife?utm_campaign=profile&utm_medium=profile-page",
-  posts: 5,
-  colors: {
-    primary: "#f8f6f3",
-    secondary: "#DCDAC7",
-    background: "transparent"
-  }
-};
-</script>
-
-<script src="https://substack.com/embed/widget.js"></script>
 <script>
   const images = [
     "assets/images/backgnd1.jpeg",
