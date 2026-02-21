@@ -192,15 +192,17 @@ body {
     <a href="index.html">Home</a>
   </div>
 </div>
-
-<div class="hero">
-  <div class="hero-content">
-
-    <h1 class="hero-title">Journal</h1>
-
-<div class="journal-wrapper">
-<div id="substack-feed-embed"></div></div>
-    
+<div style="max-width:600px; margin:auto;">
+  <iframe
+    src="https://your-substack-name.substack.com/embed"
+    width="100%"
+    height="320"
+    frameborder="0"
+    scrolling="no"
+    style="border:1px solid #EEE; border-radius:12px;"
+    title="Substack Newsletter Embed">
+  </iframe>
+</div>
 <script>
 window.SubstackFeedWidget = {
   substackUrl: "https://everythingisconnectedlife.substack.com",
@@ -213,7 +215,6 @@ window.SubstackFeedWidget = {
 };
 </script>
 
-<script src="https://substack.com/embed/widget.js" async></script>
 <script>
   const images = [
     "assets/images/backgnd1.jpeg",
