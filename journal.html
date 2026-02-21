@@ -9,6 +9,12 @@
   <link rel="preload" href="/fonts/Outfit-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
 
   <style>
+
+    .journal-wrapper {
+  max-width: 900px;
+  margin-top: 60px;
+}
+    
   @font-face {
   font-family: 'Outfit';
   src: url('assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
@@ -169,7 +175,23 @@ body {
 </head>
 
 <body>
+<div class="journal-wrapper">
+  <div id="substack-feed-embed"></div>
+</div>
 
+<script>
+window.SubstackFeedWidget = {
+  substackUrl: "everythingisconnectedlife.substack.com",
+  posts: 5,
+  colors: {
+    primary: "#f8f6f3",
+    secondary: "#DCDAC7",
+    background: "transparent"
+  }
+};
+</script>
+
+<script src="https://substack.com/embed/widget.js" async></script>
   <!-- Background -->
 <div id="bg-slideshow">
   <div class="bg bg1"></div>
@@ -194,24 +216,6 @@ body {
  <h1 class="hero-title">Journal</h1>
 <div class="journal-wrapper">
 
-  <div id="substack-feed-embed"></div>
-
-  <script>
-    window.SubstackFeedWidget = {
-      substackUrl: "https://substack.com/@everythingisconnectedlife?utm_campaign=profile&utm_medium=profile-page",
-      posts: 5,
-      layout: "right",
-      colors: {
-        primary: "#f8f6f3",
-        secondary: "#DCDAC7",
-        background: "transparent"
-      }
-    };
-  </script>
-
-  <script src="https://substack.com/feed/widget.js" async></script>
-
-</div>
 
 
   </div>
