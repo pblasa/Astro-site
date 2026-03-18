@@ -1,80 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Everything is Connected – 2026 Astrology Calendar</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Everything is Connected</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Download the 2026 Astrology Calendar in .ics format. Stay synced with lunations, retrogrades, eclipses, and cosmic events. Free import for Google and Apple Calendar.">
-  <meta name="keywords" content="astrology calendar, 2026, .ics calendar, lunar phases, retrogrades, eclipses, astrology events, downloadable calendar, strology calendar 2026, 2026 astrology events, astrology ICS calendar, lunations calendar, retrogrades 2026, eclipses calendar 2026, astrology transits, downloadable astrology calendar, Google Calendar astrology, Apple Calendar astrology">
-  <meta name="author" content="Everything is Connected">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Everything is Connected – 2026 Astrology Calendar">
-  <meta property="og:description" content="Download the 2026 Astrology Calendar in .ics format. Stay synced with lunations, retrogrades, eclipses, and cosmic events.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://everythingisconnected.life/">
-  <meta property="og:image" content="https://everythingisconnected.life/assets/images/calendar-preview.png">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Everything is Connected – 2026 Astrology Calendar">
-  <meta name="twitter:description" content="Download the 2026 Astrology Calendar in .ics format. Stay synced with lunations, retrogrades, eclipses, and cosmic events.">
-  <meta name="twitter:image" content="https://everythingisconnected.life/assets/images/calendar-preview.png">
+<style>
 
-  <!-- Calendar .ics -->
-  <link rel="alternate" type="text/calendar" title="2026 Astrology Calendar" href="assets/calendars/astrology-2026.ics">
+/* ===== FONT ===== */
+@font-face {
+  font-family: 'Outfit';
+  src: url('assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+}
 
-  <style>
-        /* ===== Global body styling ===== */
-    body {
-      margin: 0;           /* remove default margins */
-      padding-left: 30px;  /* global left margin */
-      padding-right: 0;    /* optional */
-      font-family: 'Outfit', Arial, sans-serif;
-      background: #3c3530;
-      color: #f8f6f3;
-    }
-    /* ===== Fonts ===== */
-    @font-face {
-      font-family: 'Outfit';
-      src: url('assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: 'Outfit', Arial, sans-serif;
+  background: #3c3530;
+  color: #f8f6f3;
+  overflow-x: hidden;
+}
 
-    /* ===== Reset & Body ===== */
-    body {
-      margin: 0;
-      font-family: 'Outfit', Arial, sans-serif;
-      color: #f8f6f3;
-      text-align: left;
-      background: #3c3530;
-      overflow-x: hidden;
-    }
-
-    /* ===== Background Slideshow ===== */
-  #bg-slideshow {
+/* ===== BACKGROUND SLIDESHOW ===== */
+#bg-slideshow {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;      /* full viewport height */
+  height: 100vh;
   z-index: -1;
-  overflow: hidden;
 }
 
 .bg {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;       /* fill parent container */
-  background-size: cover;        /* scale to cover entire area */
-  background-position: center;   /* center image */
-  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   opacity: 0;
   transition: opacity 60s ease-in-out;
 }
@@ -83,219 +46,237 @@
   opacity: 1;
 }
 
-    /* ===== Hero ===== */
-    .hero {
-      position: relative;
-      z-index: 1;
-      padding: 80px 20px;
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      color: white;
-    }
-    .hero-content { max-width: 700px; margin-left: 5px; }
+/* ===== MENU ===== */
+.menu-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
 
-    h1 { margin: 0 0 10px; font-size: 2.5rem; color: #DCDAC7; letter-spacing: -0.5px; }
-    .tagline { font-size: 1.2rem; margin-bottom: 2rem; }
+.menu-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
-    /* ===== SEO hidden H1 ===== */
-    .visually-hidden {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0,0,0,0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-    }
+.dropdown {
+  display: none;
+  background: #333;
+  border-radius: 6px;
+  margin-top: 10px;
+}
 
-    /* ===== Preview popups ===== */
-    .preview-wrapper { position: relative; display: inline-block; margin-top: 100px; }
-    .preview-box {
-      position: absolute;
-      top: 110%;
-      left: 0;
-      width: 450px;
-      height: 600px;
-      background: #2f2a26;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      pointer-events: none;
-      z-index: 100;
-    }
-    .preview-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .preview-wrapper:hover .preview-box {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+.dropdown a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
 
-    /* ===== Menu ===== */
-    .menu-container {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-    }
-    .menu-btn {
-      font-family: Arial, sans-serif;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: white;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 120%;
-      left: 0;
-      background: #333;
-      padding: 10px 0;
-      border-radius: 6px;
-      min-width: 180px;
-    }
-    .dropdown a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      font-family: 'Outfit', sans-serif;
-    }
+.menu-container:hover .dropdown {
+  display: block;
+}
 
-    
-    .dropdown a:hover { background: #555; }
-    .menu-container:hover .dropdown { display: block; }
+/* ===== HERO ===== */
+.hero {
+  padding: 160px 30px 60px;
+  max-width: 900px;
+}
 
-    /* ===== Buttons ===== */
-    .btn { display: inline-block; margin-top: 10px; padding: 10px 20px; border-radius: 6px; background: black; color: white; text-decoration: none; font-size: 1rem; }
-    .btn.secondary { background: #555; }
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #DCDAC7;
+}
 
-    /* ===== Calendar text ===== */
-    .calendar-text {
-      max-width: 800px;
-      margin: 0;
-      padding: 0;
-      text-align: left;
-      line-height: 1.6;
-    }
+.tagline {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
 
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      .preview-box { width: 300px; height: 400px; }
-    }
-  </style>
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: black;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* ===== SERVICES ===== */
+.services-section {
+  padding: 40px 30px 100px;
+  max-width: 1100px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #DCDAC7;
+}
+
+/* GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* CARDS */
+.service-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* FLOAT EFFECT */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+.service-card h3 {
+  margin-top: 0;
+  color: #DCDAC7;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ===== ANIMATION ===== */
+.service-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+</style>
 </head>
 
 <body>
-  <!-- Background -->
-  <div id="bg-slideshow">
-    <div class="bg bg1"></div>
-    <div class="bg bg2"></div>
-  </div>
 
-  <!-- Menu -->
-  <div class="menu-container">
-    <button class="menu-btn">☰</button>
-    <div class="dropdown">
-      <a href="about.html">About</a>
-      <a href="readings.html">Astrology Readings</a>
-      <a href="journal.html">Journal</a>
-      <a href="events.html">Classes/Events</a>
-      <a href="contact.html">Contact</a>
-      <a href="impressum.html">Impressum</a>
+<!-- BACKGROUND -->
+<div id="bg-slideshow">
+  <div class="bg bg1"></div>
+  <div class="bg bg2"></div>
+</div>
+
+<!-- MENU -->
+<div class="menu-container">
+  <button class="menu-btn">☰</button>
+  <div class="dropdown">
+    <a href="about.html">About</a>
+    <a href="readings.html">Readings</a>
+    <a href="journal.html">Journal</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Everything is Connected</h1>
+  <p class="tagline">
+    Evolutionary Astrology and Vipassana Meditation for the Quantum Self
+  </p>
+
+  <a class="btn" href="calendar-details.html">
+    Get the 2026 Astrology Calendar
+  </a>
+</div>
+
+<!-- SERVICES -->
+<div class="services-section">
+  <h2 class="section-title">Services</h2>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <h3>Astrology Calendar</h3>
+      <p>
+        Sync real-time lunations, retrogrades, and major transits directly to your calendar.
+      </p>
+      <a href="calendar-details.html" class="btn">Explore</a>
     </div>
-  </div>
 
-  <!-- Hero Content -->
-  <div class="hero">
-    <div class="hero-content">
-      <!-- SEO H1 -->
-      <h1 class="visually-hidden">2026 Astrology Calendar (.ics) – Free Download</h1>
+    <div class="service-card">
+      <h3>Readings</h3>
+      <p>
+        Deep 1:1 sessions exploring your patterns, challenges, and direction through astrology.
+      </p>
+      <a href="readings.html" class="btn">Book</a>
+    </div>
 
-      <h1 class="hero-title" style="padding-top: 250px;">Everything is Connected</h1>
-      <p class="tagline">Evolutionary Astrology and Vipassana Meditation for the Quantum Self</p>
-
-      <!-- Preview items -->
-      <div class="preview-wrapper">
-        <h2 style="font-size: 1.2rem; margin-bottom: 10px; color: #DCDAC7;">2026 Astrology Calendar (.ics)</h2>
-        <a href="calendar-details.html" class="preview-box">
-          <img src="assets/images/calendar_en.png" alt="Calendar">
-        </a> </div>
-        <div class="calendar-text">
-        <p>
-          Free Subscribe to our Calendar – updates your Apple or Google Calendar adding lunations, retrogrades, and major transits as they happen. The Calendar alerts you automatically through push notifications for exact transits.
-        </p>
-        <a class="btn secondary" href="webcal://p134-caldav.icloud.com/published/2/MTkyMzA4NjMzMTkyMzA4NtBMLmPraKhfoCAcfjYcXHMQegjc6gDe3loO_jE0_vfBht-pGSyVEi8ADNaOVgguoNp-gx9gxPpxUeWJNEApEHU">Subscribe Automatically HERE</a>
-     
-      </div>
-
-      <div class="preview-wrapper">
-        <h2 style="font-size: 1.2rem; margin-bottom: 10px; color: #DCDAC7;">Astrology Posters</h2>
-        <a href="https://www.instagram.com/everythingisconnected.life/" class="preview-box">
-          <img src="assets/images/poster_en.jpg" alt="Poster">
-    </a> </div>
-            <div class="calendar-text">
-        <p>
-          An A1 Sized High Quality 300g Matte Poster is your cheat sheet wall guide to looking at your birth chart, explaining the houses, planets, and signs and their meanings, plus other interesting details of note for those seeking to build their astrological knowledge.It comes in five different languages and colors: English, German, French, Italian, and Spanish.
-        </p>
-        <a class="btn secondary" href="https://everythingconnected.gumroad.com/l/everythingisconnected?_gl=1*1lggmej*_ga*MTA5NzI4OTQxMC4xNzcwNzYyMTQ3*_ga_6LJN6D94N6*czE3NzA3NjY1OTYkbzIkZzEkdDE3NzA3NjY2MDkkajQ3JGwwJGgw">Buy Posters on Gumroad</a>
-      </div>
-    <div class="preview-wrapper">
-      <h2 style="font-size: 1.2rem; margin-bottom: 10px; color: #DCDAC7;">Readings</h2>
-      <a href="readings.html" class="preview-box">
-        <img src="assets/images/poster_en.jpg" alt="Readings">
+    <div class="service-card">
+      <h3>Posters</h3>
+      <p>
+        A1 visual astrology guide—clean, structured, and actually useful for learning charts.
+      </p>
+      <a href="https://everythingconnected.gumroad.com/l/everythingisconnected" class="btn">
+        Buy
       </a>
     </div>
-            <div class="calendar-text">
-        <p>
-       The session will go for 1.5 hours. I am an evolutionary astrologer dealing with your astrology chart from a psycho-spiritual point of view, and am only an interpreter—not a fortune teller— of your chart and helping you to zoom out and see you from above. Through chart interpretation, your unconscious habit patterns, gifts, and challenges, making them conscious; this undertaking of being aware of our patterns (our karmic patterning) gives awareness of our unconscious habit patterns and agency to choose differently, to manage suffering by not reliving painful events. I do <br><br>• Natal Charts (Individual) <br>• Relationship (Synastry and Composite Charts) and Potential Partner Evaluation<br>• Candidate Evaluation (Potential Roommates, Employees)<br>• Forecasting (through life transit events)</p>
-        <a class="btn secondary" href="readings.html">Book a Reading</a>
-      </div>
 
-      <!-- Calendar description & button -->
-     
+  </div>
+</div>
 
-  <!-- Background slideshow JS -->
-  <script>
-    const images = [
-      "assets/images/backgnd1.jpeg",
-      "assets/images/backgnd2.jpeg",
-      "assets/images/backgnd3.jpeg",
-      "assets/images/backgnd4.jpeg"
-    ];
-    let index = 0;
-    let showingFirst = true;
-    const bg1 = document.querySelector(".bg1");
-    const bg2 = document.querySelector(".bg2");
-    bg1.style.backgroundImage = `url('${images[0]}')`;
-    bg1.classList.add("active");
+<!-- SLIDESHOW SCRIPT -->
+<script>
+const images = [
+  "assets/images/backgnd1.jpeg",
+  "assets/images/backgnd2.jpeg",
+  "assets/images/backgnd3.jpeg",
+  "assets/images/backgnd4.jpeg"
+];
 
-    setInterval(() => {
-      const nextIndex = (index + 1) % images.length;
-      const nextBg = showingFirst ? bg2 : bg1;
-      const currentBg = showingFirst ? bg1 : bg2;
+let index = 0;
+let showingFirst = true;
 
-      nextBg.style.backgroundImage = `url('${images[nextIndex]}')`;
-      nextBg.classList.add("active");
-      currentBg.classList.remove("active");
+const bg1 = document.querySelector(".bg1");
+const bg2 = document.querySelector(".bg2");
 
-      showingFirst = !showingFirst;
-      index = nextIndex;
-    }, 80000);
-  </script>
+bg1.style.backgroundImage = `url('${images[0]}')`;
+bg1.classList.add("active");
+
+setInterval(() => {
+  const nextIndex = (index + 1) % images.length;
+  const nextBg = showingFirst ? bg2 : bg1;
+  const currentBg = showingFirst ? bg1 : bg2;
+
+  nextBg.style.backgroundImage = `url('${images[nextIndex]}')`;
+  nextBg.classList.add("active");
+  currentBg.classList.remove("active");
+
+  showingFirst = !showingFirst;
+  index = nextIndex;
+}, 80000);
+</script>
+
 </body>
 </html>
