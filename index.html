@@ -118,10 +118,9 @@ body {
   color: #DCDAC7;
 }
 
-/* GRID */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
@@ -175,27 +174,28 @@ body {
     font-size: 2rem;
   }
 }
-  /* Base grid stays the same */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
-
 /* Make one wider */
 .card-large {
   grid-column: span 2;
 }
 
-/* Make one taller */
 .card-tall {
   grid-row: span 2;
 }
 
-/* Offset one for that “floating” feel */
 .card-offset {
   transform: translateY(40px);
 }
+
+/* subtle randomness (keep it light) */
+.service-card:nth-child(1) { transform: translateY(-10px); }
+.service-card:nth-child(2) { transform: translateY(20px); }
+.service-card:nth-child(3) { transform: translateY(5px); }
 
 /* Optional: slight rotation for organic feel */
 .card-offset:hover {
@@ -220,51 +220,7 @@ body {
 .service-card:nth-child(2) { transform: translateY(20px); }
 .service-card:nth-child(3) { transform: translateY(5px); }
 
-  /* Card layout */
-.service-card {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Image layer */
-.card-media {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.4s ease, transform 0.6s ease;
-}
-
-.card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Content stays above */
-.card-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* Dark overlay for readability */
-.service-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-/* 🔥 HOVER EFFECT */
-.service-card:hover .card-media {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.service-card:hover::after {
-  opacity: 1;
-}
+  }
 </style>
 </head>
 
@@ -302,37 +258,29 @@ body {
 
 <!-- SERVICES -->
 <div class="services-section">
-  <h2 class="section-title">.</h2>
+  <h2 class="section-title">Services</h2>
 
-</div><div class="services-grid">
+  <div class="services-grid">
 
- <div class="service-card card-large">
+    <div class="service-card card-large">
+      <h3>Astrology Calendar</h3>
+      <p>Sync real-time lunations, retrogrades, and transits.</p>
+      <a href="calendar-details.html" class="btn">Explore</a>
+    </div>
 
-  <div class="card-media">
-    <img src="assets/images/calendar_en.png" alt="Calendar Preview">
+    <div class="service-card card-tall">
+      <h3>Readings</h3>
+      <p>Deep 1:1 sessions exploring your patterns and direction.</p>
+      <a href="readings.html" class="btn">Book</a>
+    </div>
+
+    <div class="service-card card-offset">
+      <h3>Posters</h3>
+      <p>A1 astrology guide—clean and actually useful.</p>
+      <a href="#" class="btn">Buy</a>
+    </div>
+
   </div>
-
-  <div class="card-content">
-    <h3>Astrology Calendar</h3>
-    <p>Sync real-time lunations, retrogrades, and transits.</p>
-    <a href="calendar-details.html" class="btn">Explore</a>
-  </div>
-
-</div>
-
-  <div class="service-card card-tall">
-    <h3>Readings</h3>
-    <p>Deep 1:1 sessions exploring your patterns and direction.</p>
-    <a href="readings.html" class="btn">Book</a>
-  </div>
-
-  <div class="service-card card-offset">
-    <h3>Posters</h3>
-    <p>A1 astrology guide—clean and actually useful.</p>
-    <a href="#" class="btn">Buy</a>
-  </div>
-
-</div>
 </div>
 
 <!-- SLIDESHOW SCRIPT -->
