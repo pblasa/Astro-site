@@ -11,7 +11,6 @@
 
 <style>
 
-/* ===== FONT ===== */
 
 @font-face {
 
@@ -27,7 +26,7 @@ font-display:swap;
 
 
 
-/* ===== BODY ===== */
+/* BODY */
 
 body {
 
@@ -47,7 +46,8 @@ overflow-x:hidden;
 
 
 
-/* ===== BACKGROUND ===== */
+
+/* BACKGROUND */
 
 #bg-slideshow {
 
@@ -64,7 +64,6 @@ height:100vh;
 z-index:-1;
 
 }
-
 
 
 .bg {
@@ -86,7 +85,6 @@ transition:opacity 60s ease-in-out;
 }
 
 
-
 .bg::after {
 
 content:"";
@@ -95,10 +93,9 @@ position:absolute;
 
 inset:0;
 
-background:rgba(0,0,0,.65);
+background:rgba(0,0,0,.7);
 
 }
-
 
 
 .bg.active {
@@ -111,7 +108,7 @@ opacity:1;
 
 
 
-/* ===== MENU ===== */
+/* MENU */
 
 
 .menu-container {
@@ -150,8 +147,6 @@ background:#222;
 
 border-radius:8px;
 
-margin-top:10px;
-
 overflow:hidden;
 
 }
@@ -180,7 +175,7 @@ display:block;
 
 
 
-/* ===== HERO ===== */
+/* HERO */
 
 
 .hero {
@@ -196,13 +191,12 @@ max-width:900px;
 
 font-size:2.6rem;
 
-margin-bottom:20px;
+font-weight:300;
 
 color:#ddd7c9;
 
-font-weight:300;
-
 }
+
 
 
 .content-paragraph {
@@ -211,15 +205,13 @@ max-width:700px;
 
 line-height:1.7;
 
-margin-bottom:30px;
-
 }
 
 
 
 
 
-/* ===== POSTER GALLERY ===== */
+/* POSTER GRID */
 
 
 .poster-section {
@@ -245,10 +237,11 @@ gap:45px;
 
 .poster-card {
 
-transition:.3s ease;
+cursor:pointer;
+
+transition:.3s;
 
 }
-
 
 
 .poster-card:hover {
@@ -269,10 +262,8 @@ object-fit:cover;
 
 border-radius:12px;
 
-display:block;
-
 box-shadow:
-0 20px 45px rgba(0,0,0,.55);
+0 20px 45px rgba(0,0,0,.6);
 
 }
 
@@ -284,19 +275,16 @@ margin-top:18px;
 
 margin-bottom:8px;
 
-font-weight:400;
-
 font-size:1.4rem;
+
+font-weight:400;
 
 color:#ddd7c9;
 
 }
 
 
-
 .poster-card p {
-
-margin:0;
 
 max-width:400px;
 
@@ -310,40 +298,117 @@ color:#c9c5bd;
 
 
 
-/* ===== BOOKING ===== */
+/* LIGHTBOX */
 
 
-.booking-wrapper {
+.lightbox {
 
-margin:60px auto 100px;
+display:none;
 
-width:90%;
+position:fixed;
 
-max-width:1000px;
+inset:0;
 
-}
+background:rgba(0,0,0,.94);
 
+z-index:3000;
 
+align-items:center;
 
-.booking-wrapper iframe {
+justify-content:center;
 
-width:100%;
+flex-direction:column;
 
-min-height:900px;
-
-border-radius:8px;
-
-border:none;
-
-box-shadow:0 10px 40px rgba(0,0,0,.5);
+overflow:hidden;
 
 }
 
 
 
+.lightbox.active {
+
+display:flex;
+
+}
 
 
-/* ===== MOBILE ===== */
+
+.lightbox-image {
+
+max-height:80vh;
+
+max-width:90vw;
+
+cursor:grab;
+
+user-select:none;
+
+transition:.15s;
+
+}
+
+
+
+.lightbox-image:active {
+
+cursor:grabbing;
+
+}
+
+
+
+.close-lightbox {
+
+position:absolute;
+
+top:20px;
+
+right:35px;
+
+font-size:3rem;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+
+
+.paypal-button {
+
+margin-top:25px;
+
+background:#ffc439;
+
+color:#111;
+
+padding:15px 40px;
+
+border-radius:30px;
+
+font-size:1.1rem;
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+
+
+.paypal-button:hover {
+
+transform:scale(1.05);
+
+}
+
+
+
+
+
+/* MOBILE */
 
 
 @media(max-width:900px){
@@ -383,11 +448,13 @@ height:auto;
 
 
 
+
 <body>
 
 
 
 <!-- BACKGROUND -->
+
 
 <div id="bg-slideshow">
 
@@ -400,11 +467,11 @@ height:auto;
 
 
 
-
 <!-- MENU -->
 
 
 <div class="menu-container">
+
 
 <button class="menu-btn">☰</button>
 
@@ -431,7 +498,6 @@ height:auto;
 
 
 
-
 <!-- HERO -->
 
 
@@ -449,12 +515,13 @@ Posters on sale now.
 
 <br><br>
 
-Explore symbolic astrology artwork designed to connect planetary archetypes with visual inspiration. Each poster is printed in high quality DIN A1 format.
+Symbolic astrology artwork connecting planetary archetypes with visual inspiration. Printed in high quality DIN A1 format.
 
 </p>
 
 
 </div>
+
 
 
 
@@ -471,14 +538,19 @@ Explore symbolic astrology artwork designed to connect planetary archetypes with
 
 
 
-<div class="poster-card">
 
-<img src="assets/images/poster/poster1.jpg" class="poster-thumb">
+
+<div class="poster-card" onclick="openPoster(this)">
+
+<img 
+src="assets/images/poster/poster1.jpg"
+data-large="assets/images/poster/poster1-large.jpg"
+class="poster-thumb">
 
 <h3>Mercury</h3>
 
 <p>
-Communication, thought, learning and the movement of ideas.
+Communication, thought, learning and ideas.
 </p>
 
 </div>
@@ -487,14 +559,19 @@ Communication, thought, learning and the movement of ideas.
 
 
 
-<div class="poster-card">
+<div class="poster-card" onclick="openPoster(this)">
 
-<img src="assets/images/poster/poster2.jpg" class="poster-thumb">
+
+<img 
+src="assets/images/poster/poster2.jpg"
+data-large="assets/images/poster/poster2-large.jpg"
+class="poster-thumb">
+
 
 <h3>Venus</h3>
 
 <p>
-Beauty, attraction, creativity and the art of connection.
+Beauty, creativity, love and connection.
 </p>
 
 </div>
@@ -503,15 +580,23 @@ Beauty, attraction, creativity and the art of connection.
 
 
 
-<div class="poster-card">
 
-<img src="assets/images/poster/poster3.jpg" class="poster-thumb">
+
+<div class="poster-card" onclick="openPoster(this)">
+
+
+<img 
+src="assets/images/poster/poster3.jpg"
+data-large="assets/images/poster/poster3-large.jpg"
+class="poster-thumb">
+
 
 <h3>Mars</h3>
 
 <p>
-Drive, courage, passion and conscious action.
+Energy, courage, passion and action.
 </p>
+
 
 </div>
 
@@ -519,15 +604,22 @@ Drive, courage, passion and conscious action.
 
 
 
-<div class="poster-card">
 
-<img src="assets/images/poster/poster4.jpg" class="poster-thumb">
+<div class="poster-card" onclick="openPoster(this)">
+
+
+<img 
+src="assets/images/poster/poster4.jpg"
+data-large="assets/images/poster/poster4-large.jpg"
+class="poster-thumb">
+
 
 <h3>Jupiter</h3>
 
 <p>
-Growth, wisdom, expansion and deeper understanding.
+Expansion, wisdom and growth.
 </p>
+
 
 </div>
 
@@ -535,21 +627,71 @@ Growth, wisdom, expansion and deeper understanding.
 
 
 
-<div class="poster-card">
 
-<img src="assets/images/poster/poster5.jpg" class="poster-thumb">
+
+<div class="poster-card" onclick="openPoster(this)">
+
+
+<img 
+src="assets/images/poster/poster5.jpg"
+data-large="assets/images/poster/poster5-large.jpg"
+class="poster-thumb">
+
 
 <h3>Saturn</h3>
 
 <p>
-Structure, discipline, time and transformation.
+Structure, mastery and transformation.
 </p>
 
+
+</div>
+
+
+
+
+
+</div>
+
 </div>
 
 
 
+
+
+
+
+<!-- LIGHTBOX -->
+
+
+<div class="lightbox" id="lightbox">
+
+
+<div class="close-lightbox" onclick="closePoster()">
+
+×
+
 </div>
+
+
+
+<img id="lightbox-image"
+class="lightbox-image">
+
+
+
+
+
+<a 
+class="paypal-button"
+href="YOUR_PAYPAL_LINK_HERE"
+target="_blank">
+
+Buy with PayPal
+
+</a>
+
+
 
 </div>
 
@@ -562,7 +704,11 @@ Structure, discipline, time and transformation.
 <script>
 
 
-const images = [
+
+/* BACKGROUND SLIDESHOW */
+
+
+const images=[
 
 "assets/images/poster/background1.jpg",
 
@@ -595,13 +741,12 @@ bg1.classList.add("active");
 setInterval(()=>{
 
 
-const nextIndex=(index+1)%images.length;
+let nextIndex=(index+1)%images.length;
 
 
-const nextBg=showingFirst?bg2:bg1;
+let nextBg=showingFirst?bg2:bg1;
 
-const currentBg=showingFirst?bg1:bg2;
-
+let currentBg=showingFirst?bg1:bg2;
 
 
 nextBg.style.backgroundImage=
@@ -614,13 +759,177 @@ nextBg.classList.add("active");
 currentBg.classList.remove("active");
 
 
-
 showingFirst=!showingFirst;
 
 index=nextIndex;
 
 
 },80000);
+
+
+
+
+
+
+
+
+/* POSTER VIEWER */
+
+
+const lightbox =
+document.getElementById("lightbox");
+
+
+const lightImage =
+document.getElementById("lightbox-image");
+
+
+
+let scale=1;
+
+let posX=0;
+
+let posY=0;
+
+let dragging=false;
+
+let startX;
+
+let startY;
+
+
+
+
+function openPoster(card){
+
+
+let img =
+card.querySelector("img");
+
+
+lightImage.src =
+img.dataset.large;
+
+
+scale=1;
+
+posX=0;
+
+posY=0;
+
+
+updateTransform();
+
+
+lightbox.classList.add("active");
+
+
+}
+
+
+
+
+function closePoster(){
+
+lightbox.classList.remove("active");
+
+}
+
+
+
+
+lightImage.addEventListener(
+"wheel",
+function(e){
+
+e.preventDefault();
+
+
+if(e.deltaY<0){
+
+scale+=0.15;
+
+}
+
+else{
+
+scale-=0.15;
+
+}
+
+
+scale=Math.min(Math.max(scale,.7),5);
+
+
+updateTransform();
+
+});
+
+
+
+
+
+lightImage.addEventListener(
+"mousedown",
+function(e){
+
+
+dragging=true;
+
+
+startX=e.clientX-posX;
+
+startY=e.clientY-posY;
+
+
+});
+
+
+
+
+window.addEventListener(
+"mouseup",
+function(){
+
+dragging=false;
+
+});
+
+
+
+
+
+window.addEventListener(
+"mousemove",
+function(e){
+
+
+if(!dragging)return;
+
+
+posX=e.clientX-startX;
+
+posY=e.clientY-startY;
+
+
+updateTransform();
+
+
+});
+
+
+
+
+
+function updateTransform(){
+
+
+lightImage.style.transform=
+
+`translate(${posX}px,${posY}px) scale(${scale})`;
+
+
+}
 
 
 
