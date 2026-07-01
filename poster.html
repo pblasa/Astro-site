@@ -47,6 +47,7 @@ overflow-x:hidden;
 
 
 
+
 /* BACKGROUND */
 
 #bg-slideshow {
@@ -64,6 +65,7 @@ height:100vh;
 z-index:-1;
 
 }
+
 
 
 .bg {
@@ -85,6 +87,7 @@ transition:opacity 60s ease-in-out;
 }
 
 
+
 .bg::after {
 
 content:"";
@@ -93,9 +96,10 @@ position:absolute;
 
 inset:0;
 
-background:rgba(0,0,0,.7);
+background:rgba(0,0,0,.72);
 
 }
+
 
 
 .bg.active {
@@ -139,6 +143,7 @@ cursor:pointer;
 }
 
 
+
 .dropdown {
 
 display:none;
@@ -150,6 +155,7 @@ border-radius:8px;
 overflow:hidden;
 
 }
+
 
 
 .dropdown a {
@@ -165,11 +171,13 @@ text-decoration:none;
 }
 
 
+
 .menu-container:hover .dropdown {
 
 display:block;
 
 }
+
 
 
 
@@ -185,6 +193,7 @@ padding:140px 20px 50px;
 max-width:900px;
 
 }
+
 
 
 .hero h1 {
@@ -211,16 +220,19 @@ line-height:1.7;
 
 
 
-/* POSTER GRID */
+
+
+/* POSTER GALLERY */
 
 
 .poster-section {
 
-padding:30px 20px 120px;
+padding:30px 20px 30px;
 
 max-width:1400px;
 
 }
+
 
 
 .poster-grid {
@@ -235,13 +247,15 @@ gap:45px;
 
 
 
+
 .poster-card {
 
 cursor:pointer;
 
-transition:.3s;
+transition:.3s ease;
 
 }
+
 
 
 .poster-card:hover {
@@ -252,20 +266,25 @@ transform:translateY(-10px);
 
 
 
+
 .poster-thumb {
 
 width:400px;
 
-height:300px;
+height:565px;
 
 object-fit:cover;
 
 border-radius:12px;
 
+display:block;
+
 box-shadow:
-0 20px 45px rgba(0,0,0,.6);
+
+0 20px 45px rgba(0,0,0,.65);
 
 }
+
 
 
 
@@ -284,6 +303,7 @@ color:#ddd7c9;
 }
 
 
+
 .poster-card p {
 
 max-width:400px;
@@ -293,6 +313,56 @@ line-height:1.5;
 color:#c9c5bd;
 
 }
+
+
+
+
+
+
+/* PAYPAL */
+
+
+.paypal-area {
+
+text-align:center;
+
+margin:50px 0 120px;
+
+}
+
+
+
+.paypal-button {
+
+background:#ffc439;
+
+color:#111;
+
+padding:16px 45px;
+
+border-radius:40px;
+
+font-size:1.15rem;
+
+font-weight:600;
+
+text-decoration:none;
+
+display:inline-block;
+
+transition:.2s;
+
+}
+
+
+
+.paypal-button:hover {
+
+transform:scale(1.05);
+
+}
+
+
 
 
 
@@ -309,7 +379,7 @@ position:fixed;
 
 inset:0;
 
-background:rgba(0,0,0,.94);
+background:rgba(0,0,0,.96);
 
 z-index:3000;
 
@@ -317,11 +387,10 @@ align-items:center;
 
 justify-content:center;
 
-flex-direction:column;
-
 overflow:hidden;
 
 }
+
 
 
 
@@ -333,11 +402,12 @@ display:flex;
 
 
 
+
 .lightbox-image {
 
-max-height:80vh;
+max-height:92vh;
 
-max-width:90vw;
+max-width:92vw;
 
 cursor:grab;
 
@@ -376,37 +446,6 @@ cursor:pointer;
 
 
 
-.paypal-button {
-
-margin-top:25px;
-
-background:#ffc439;
-
-color:#111;
-
-padding:15px 40px;
-
-border-radius:30px;
-
-font-size:1.1rem;
-
-font-weight:600;
-
-text-decoration:none;
-
-}
-
-
-
-.paypal-button:hover {
-
-transform:scale(1.05);
-
-}
-
-
-
-
 
 /* MOBILE */
 
@@ -430,6 +469,7 @@ grid-template-columns:1fr;
 }
 
 
+
 .poster-thumb {
 
 width:100%;
@@ -442,7 +482,6 @@ height:auto;
 }
 
 </style>
-
 
 </head>
 
@@ -467,6 +506,9 @@ height:auto;
 
 
 
+
+
+
 <!-- MENU -->
 
 
@@ -477,6 +519,7 @@ height:auto;
 
 
 <div class="dropdown">
+
 
 <a href="about.html">About</a>
 
@@ -490,9 +533,12 @@ height:auto;
 
 <a href="index.html">Home</a>
 
+
 </div>
 
 </div>
+
+
 
 
 
@@ -505,15 +551,19 @@ height:auto;
 
 
 <h1>
+
 Astrology Posters (DIN A1 Format)
+
 </h1>
 
 
 <p class="content-paragraph">
 
+
 Posters on sale now.
 
 <br><br>
+
 
 Symbolic astrology artwork connecting planetary archetypes with visual inspiration. Printed in high quality DIN A1 format.
 
@@ -521,6 +571,7 @@ Symbolic astrology artwork connecting planetary archetypes with visual inspirati
 
 
 </div>
+
 
 
 
@@ -540,6 +591,7 @@ Symbolic astrology artwork connecting planetary archetypes with visual inspirati
 
 
 
+
 <div class="poster-card" onclick="openPoster(this)">
 
 <img 
@@ -547,11 +599,16 @@ src="assets/images/poster/poster1.jpg"
 data-large="assets/images/poster/poster1-large.jpg"
 class="poster-thumb">
 
+
 <h3>Mercury</h3>
 
+
 <p>
+
 Communication, thought, learning and ideas.
+
 </p>
+
 
 </div>
 
@@ -559,8 +616,9 @@ Communication, thought, learning and ideas.
 
 
 
-<div class="poster-card" onclick="openPoster(this)">
 
+
+<div class="poster-card" onclick="openPoster(this)">
 
 <img 
 src="assets/images/poster/poster2.jpg"
@@ -570,9 +628,13 @@ class="poster-thumb">
 
 <h3>Venus</h3>
 
+
 <p>
+
 Beauty, creativity, love and connection.
+
 </p>
+
 
 </div>
 
@@ -582,8 +644,8 @@ Beauty, creativity, love and connection.
 
 
 
-<div class="poster-card" onclick="openPoster(this)">
 
+<div class="poster-card" onclick="openPoster(this)">
 
 <img 
 src="assets/images/poster/poster3.jpg"
@@ -593,8 +655,11 @@ class="poster-thumb">
 
 <h3>Mars</h3>
 
+
 <p>
+
 Energy, courage, passion and action.
+
 </p>
 
 
@@ -605,8 +670,8 @@ Energy, courage, passion and action.
 
 
 
-<div class="poster-card" onclick="openPoster(this)">
 
+<div class="poster-card" onclick="openPoster(this)">
 
 <img 
 src="assets/images/poster/poster4.jpg"
@@ -616,8 +681,11 @@ class="poster-thumb">
 
 <h3>Jupiter</h3>
 
+
 <p>
+
 Expansion, wisdom and growth.
+
 </p>
 
 
@@ -631,7 +699,6 @@ Expansion, wisdom and growth.
 
 <div class="poster-card" onclick="openPoster(this)">
 
-
 <img 
 src="assets/images/poster/poster5.jpg"
 data-large="assets/images/poster/poster5-large.jpg"
@@ -640,8 +707,11 @@ class="poster-thumb">
 
 <h3>Saturn</h3>
 
+
 <p>
+
 Structure, mastery and transformation.
+
 </p>
 
 
@@ -654,6 +724,37 @@ Structure, mastery and transformation.
 </div>
 
 </div>
+
+
+
+
+
+
+
+<!-- PAYPAL -->
+
+
+<div class="paypal-area">
+
+
+<a
+
+class="paypal-button"
+
+href="YOUR_PAYPAL_LINK_HERE"
+
+target="_blank">
+
+
+Buy with PayPal
+
+
+</a>
+
+
+</div>
+
+
 
 
 
@@ -674,26 +775,16 @@ Structure, mastery and transformation.
 </div>
 
 
+<img 
 
-<img id="lightbox-image"
+id="lightbox-image"
+
 class="lightbox-image">
 
 
-
-
-
-<a 
-class="paypal-button"
-href="YOUR_PAYPAL_LINK_HERE"
-target="_blank">
-
-Buy with PayPal
-
-</a>
-
-
-
 </div>
+
+
 
 
 
@@ -705,7 +796,9 @@ Buy with PayPal
 
 
 
-/* BACKGROUND SLIDESHOW */
+
+
+/* BACKGROUND */
 
 
 const images=[
@@ -726,37 +819,45 @@ let index=0;
 let showingFirst=true;
 
 
+
 const bg1=document.querySelector(".bg1");
 
 const bg2=document.querySelector(".bg2");
 
 
 
-bg1.style.backgroundImage=`url('${images[0]}')`;
+bg1.style.backgroundImage=
+
+`url('${images[0]}')`;
+
 
 bg1.classList.add("active");
+
 
 
 
 setInterval(()=>{
 
 
-let nextIndex=(index+1)%images.length;
+const nextIndex=(index+1)%images.length;
 
 
-let nextBg=showingFirst?bg2:bg1;
+const nextBg=showingFirst?bg2:bg1;
 
-let currentBg=showingFirst?bg1:bg2;
+const currentBg=showingFirst?bg1:bg2;
+
 
 
 nextBg.style.backgroundImage=
+
 `url('${images[nextIndex]}')`;
+
 
 
 nextBg.classList.add("active");
 
-
 currentBg.classList.remove("active");
+
 
 
 showingFirst=!showingFirst;
@@ -773,16 +874,13 @@ index=nextIndex;
 
 
 
-/* POSTER VIEWER */
+
+/* VIEWER */
 
 
-const lightbox =
-document.getElementById("lightbox");
+const lightbox=document.getElementById("lightbox");
 
-
-const lightImage =
-document.getElementById("lightbox-image");
-
+const lightImage=document.getElementById("lightbox-image");
 
 
 let scale=1;
@@ -800,15 +898,16 @@ let startY;
 
 
 
+
+
 function openPoster(card){
 
 
-let img =
-card.querySelector("img");
+const img=card.querySelector("img");
 
 
-lightImage.src =
-img.dataset.large;
+lightImage.src=img.dataset.large;
+
 
 
 scale=1;
@@ -818,7 +917,9 @@ posX=0;
 posY=0;
 
 
+
 updateTransform();
+
 
 
 lightbox.classList.add("active");
@@ -829,20 +930,28 @@ lightbox.classList.add("active");
 
 
 
+
 function closePoster(){
 
+
 lightbox.classList.remove("active");
+
 
 }
 
 
 
 
+
 lightImage.addEventListener(
+
 "wheel",
+
 function(e){
 
+
 e.preventDefault();
+
 
 
 if(e.deltaY<0){
@@ -858,10 +967,12 @@ scale-=0.15;
 }
 
 
+
 scale=Math.min(Math.max(scale,.7),5);
 
 
 updateTransform();
+
 
 });
 
@@ -869,8 +980,13 @@ updateTransform();
 
 
 
+
+
+
 lightImage.addEventListener(
+
 "mousedown",
+
 function(e){
 
 
@@ -887,24 +1003,31 @@ startY=e.clientY-posY;
 
 
 
+
+
+
 window.addEventListener(
+
 "mouseup",
-function(){
 
-dragging=false;
+()=>dragging=false
 
-});
+);
+
 
 
 
 
 
 window.addEventListener(
+
 "mousemove",
+
 function(e){
 
 
 if(!dragging)return;
+
 
 
 posX=e.clientX-startX;
@@ -921,13 +1044,17 @@ updateTransform();
 
 
 
+
+
 function updateTransform(){
 
 
 lightImage.style.transform=
 
-`translate(${posX}px,${posY}px) scale(${scale})`;
-
+`
+translate(${posX}px,${posY}px)
+scale(${scale})
+`;
 
 }
 
