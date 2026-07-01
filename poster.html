@@ -1,270 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Astrology Posters – Everything is Connected</title>
+
 
 <style>
 
 /* ===== FONT ===== */
+
 @font-face {
-  font-family: 'Outfit';
-  src: url('assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-display: swap;
+
+font-family:'Outfit';
+
+src:url('assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+
+font-weight:100 900;
+
+font-display:swap;
+
 }
+
+
 
 /* ===== BODY ===== */
+
 body {
-  margin: 0;
-  padding-left: 30px;
-  font-family: 'Outfit', Arial, sans-serif;
-  background: #3c3530;
-  color: #f8f6f3;
-  overflow-x: hidden;
+
+margin:0;
+
+padding-left:30px;
+
+font-family:'Outfit',Arial,sans-serif;
+
+background:#12100f;
+
+color:#f8f6f3;
+
+overflow-x:hidden;
+
 }
+
+
 
 /* ===== BACKGROUND ===== */
+
 #bg-slideshow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100vh;
+
+z-index:-1;
+
 }
+
+
 
 .bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 60s ease-in-out;
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+background-size:cover;
+
+background-position:center;
+
+opacity:0;
+
+transition:opacity 60s ease-in-out;
+
 }
+
+
+
+.bg::after {
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:rgba(0,0,0,.65);
+
+}
+
+
 
 .bg.active {
-  opacity: 1;
+
+opacity:1;
+
 }
+
+
+
+
 
 /* ===== MENU ===== */
+
+
 .menu-container {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
+
+position:fixed;
+
+top:20px;
+
+left:20px;
+
+z-index:1000;
+
 }
+
 
 .menu-btn {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
+
+font-size:2rem;
+
+background:none;
+
+border:none;
+
+color:white;
+
+cursor:pointer;
+
 }
+
 
 .dropdown {
-  display: none;
-  background: #333;
-  border-radius: 6px;
-  margin-top: 10px;
+
+display:none;
+
+background:#222;
+
+border-radius:8px;
+
+margin-top:10px;
+
+overflow:hidden;
+
 }
+
 
 .dropdown a {
-  display: block;
-  padding: 10px 20px;
-  color: white;
-  text-decoration: none;
+
+display:block;
+
+padding:12px 20px;
+
+color:white;
+
+text-decoration:none;
+
 }
+
 
 .menu-container:hover .dropdown {
-  display: block;
+
+display:block;
+
 }
+
+
+
+
 
 /* ===== HERO ===== */
+
+
 .hero {
-  padding: 140px 20px 60px;
-  max-width: 900px;
+
+padding:140px 20px 50px;
+
+max-width:900px;
+
 }
+
 
 .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #DCDAC7;
-  font-weight: 300;
+
+font-size:2.6rem;
+
+margin-bottom:20px;
+
+color:#ddd7c9;
+
+font-weight:300;
+
 }
+
 
 .content-paragraph {
-  max-width: 700px;
-  line-height: 1.6;
-  margin-bottom: 40px;
-  font-weight: 400;
+
+max-width:700px;
+
+line-height:1.7;
+
+margin-bottom:30px;
+
 }
 
-/* ===== SERVICES (FLOATING BOXES) ===== */
-.services-section {
-  padding: 40px 20px 100px;
-  max-width: 1100px;
+
+
+
+
+/* ===== POSTER GALLERY ===== */
+
+
+.poster-section {
+
+padding:30px 20px 120px;
+
+max-width:1400px;
+
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+
+.poster-grid {
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+
+gap:45px;
+
 }
 
-.service-card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
+
+
+.poster-card {
+
+transition:.3s ease;
+
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
+
+
+.poster-card:hover {
+
+transform:translateY(-10px);
+
 }
 
-.service-card h3 {
-  margin-top: 0;
-  font-weight: 400;
-  color: #DCDAC7;
+
+
+.poster-thumb {
+
+width:400px;
+
+height:300px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+display:block;
+
+box-shadow:
+0 20px 45px rgba(0,0,0,.55);
+
 }
 
-/* layout variation */
-.card-large { grid-column: span 2; }
-.card-tall { grid-row: span 2; }
-.card-offset { transform: translateY(40px); }
+
+
+.poster-card h3 {
+
+margin-top:18px;
+
+margin-bottom:8px;
+
+font-weight:400;
+
+font-size:1.4rem;
+
+color:#ddd7c9;
+
+}
+
+
+
+.poster-card p {
+
+margin:0;
+
+max-width:400px;
+
+line-height:1.5;
+
+color:#c9c5bd;
+
+}
+
+
+
+
 
 /* ===== BOOKING ===== */
+
+
 .booking-wrapper {
-  margin: 60px auto 100px;
-  width: 90%;
-  max-width: 1000px;
+
+margin:60px auto 100px;
+
+width:90%;
+
+max-width:1000px;
+
 }
+
+
 
 .booking-wrapper iframe {
-  width: 100%;
-  min-height: 900px;
-  border-radius: 8px;
-  border: none;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+
+width:100%;
+
+min-height:900px;
+
+border-radius:8px;
+
+border:none;
+
+box-shadow:0 10px 40px rgba(0,0,0,.5);
+
 }
 
+
+
+
+
 /* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  body {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
 
-  .card-large,
-  .card-tall {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
+@media(max-width:900px){
 
-  .card-offset {
-    transform: none;
-  }
+
+body {
+
+padding-left:20px;
+
+padding-right:20px;
+
+}
+
+
+.poster-grid {
+
+grid-template-columns:1fr;
+
+}
+
+
+.poster-thumb {
+
+width:100%;
+
+height:auto;
+
+}
+
+
 }
 
 </style>
+
+
 </head>
+
+
 
 <body>
 
+
+
 <!-- BACKGROUND -->
+
 <div id="bg-slideshow">
-  <div class="bg bg1"></div>
-  <div class="bg bg2"></div>
+
+<div class="bg bg1"></div>
+
+<div class="bg bg2"></div>
+
 </div>
+
+
+
+
 
 <!-- MENU -->
+
+
 <div class="menu-container">
-  <button class="menu-btn">☰</button>
-  <div class="dropdown">
-    <a href="about.html">About</a>
-    <a href="readings.html">Astrology Readings</a>
-    <a href="journal.html">Journal</a>
-    <a href="events.html">Classes/Events</a>
-    <a href="contact.html">Contact</a>
-    <a href="index.html">Home</a>
-  </div>
+
+<button class="menu-btn">☰</button>
+
+
+<div class="dropdown">
+
+<a href="about.html">About</a>
+
+<a href="readings.html">Astrology Readings</a>
+
+<a href="journal.html">Journal</a>
+
+<a href="events.html">Classes/Events</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="index.html">Home</a>
+
 </div>
+
+</div>
+
+
+
+
+
 
 <!-- HERO -->
+
+
 <div class="hero">
-  <h1>Astrology Posters (Din A1 Format)</h1>
 
-  <p class="content-paragraph">
-    Posters on Sale now<br><br>
-    The sessions are a mix of Evolutionary Astrology principles, Vipassana Meditation, Gong Meditation and Quantum Healing methods, and run from one hour to an hour and a half. These sessions are designed to help you understand your internal patterns while cultivating awareness and clarity through meditation practice.
-  </p>
-</div>
 
-<!-- FLOATING BOXES -->
-<div class="services-section">
-  <div class="services-grid">
+<h1>
+Astrology Posters (DIN A1 Format)
+</h1>
 
-    <div class="service-card card-large">
-      <h3>In-Person Classes</h3>
-      <p>Join sessions at Green Yoga Berlin with guided meditation and astrology integration.</p>
-    </div>
 
-    <div class="service-card card-tall">
-      <h3>Online Sessions</h3>
-      <p>Participate remotely from anywhere with live guided practice and teachings.</p>
-    </div>
+<p class="content-paragraph">
 
-    <div class="service-card card-offset">
-      <h3>Workshops</h3>
-      <p>Special events combining astrology, sound, and meditation techniques.</p>
-    </div>
+Posters on sale now.
 
-  </div>
+<br><br>
+
+Explore symbolic astrology artwork designed to connect planetary archetypes with visual inspiration. Each poster is printed in high quality DIN A1 format.
+
+</p>
+
+
 </div>
 
 
-<!-- SLIDESHOW SCRIPT -->
+
+
+
+
+<!-- POSTERS -->
+
+
+<div class="poster-section">
+
+
+<div class="poster-grid">
+
+
+
+<div class="poster-card">
+
+<img src="assets/images/poster/poster1.jpg" class="poster-thumb">
+
+<h3>Mercury</h3>
+
+<p>
+Communication, thought, learning and the movement of ideas.
+</p>
+
+</div>
+
+
+
+
+
+<div class="poster-card">
+
+<img src="assets/images/poster/poster2.jpg" class="poster-thumb">
+
+<h3>Venus</h3>
+
+<p>
+Beauty, attraction, creativity and the art of connection.
+</p>
+
+</div>
+
+
+
+
+
+<div class="poster-card">
+
+<img src="assets/images/poster/poster3.jpg" class="poster-thumb">
+
+<h3>Mars</h3>
+
+<p>
+Drive, courage, passion and conscious action.
+</p>
+
+</div>
+
+
+
+
+
+<div class="poster-card">
+
+<img src="assets/images/poster/poster4.jpg" class="poster-thumb">
+
+<h3>Jupiter</h3>
+
+<p>
+Growth, wisdom, expansion and deeper understanding.
+</p>
+
+</div>
+
+
+
+
+
+<div class="poster-card">
+
+<img src="assets/images/poster/poster5.jpg" class="poster-thumb">
+
+<h3>Saturn</h3>
+
+<p>
+Structure, discipline, time and transformation.
+</p>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
 <script>
+
+
 const images = [
-  "assets/images/poster/background1.jpg",
-  "assets/images/poster/background2.jpg",
-  "assets/images/poster/background3.jpg",
-  "assets/images/poster/background4.jpg"
+
+"assets/images/poster/background1.jpg",
+
+"assets/images/poster/background2.jpg",
+
+"assets/images/poster/background3.jpg",
+
+"assets/images/poster/background4.jpg"
+
 ];
 
-let index = 0;
-let showingFirst = true;
 
-const bg1 = document.querySelector(".bg1");
-const bg2 = document.querySelector(".bg2");
+let index=0;
 
-bg1.style.backgroundImage = `url('${images[0]}')`;
+let showingFirst=true;
+
+
+const bg1=document.querySelector(".bg1");
+
+const bg2=document.querySelector(".bg2");
+
+
+
+bg1.style.backgroundImage=`url('${images[0]}')`;
+
 bg1.classList.add("active");
 
-setInterval(() => {
-  const nextIndex = (index + 1) % images.length;
-  const nextBg = showingFirst ? bg2 : bg1;
-  const currentBg = showingFirst ? bg1 : bg2;
 
-  nextBg.style.backgroundImage = `url('${images[nextIndex]}')`;
-  nextBg.classList.add("active");
-  currentBg.classList.remove("active");
 
-  showingFirst = !showingFirst;
-  index = nextIndex;
-}, 80000);
+setInterval(()=>{
+
+
+const nextIndex=(index+1)%images.length;
+
+
+const nextBg=showingFirst?bg2:bg1;
+
+const currentBg=showingFirst?bg1:bg2;
+
+
+
+nextBg.style.backgroundImage=
+`url('${images[nextIndex]}')`;
+
+
+nextBg.classList.add("active");
+
+
+currentBg.classList.remove("active");
+
+
+
+showingFirst=!showingFirst;
+
+index=nextIndex;
+
+
+},80000);
+
+
+
 </script>
 
+
+
 </body>
+
 </html>
